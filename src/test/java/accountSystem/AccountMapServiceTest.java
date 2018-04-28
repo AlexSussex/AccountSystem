@@ -27,7 +27,7 @@ public class AccountMapServiceTest {
 	
 	@Test
 	public void addAccountTest() {
-		Assert.assertEquals("{\"message\": \"account sucessfully added\"}", accounts.addAccount(util.getJSONForObject(account1)));
-		Assert.assertEquals("{\"message\": \"account sucessfully added\"}", accounts.addAccount(util.getJSONForObject(account2)));
+		Assert.assertEquals("{\"message\": \"The account has been sucessfully added to the list.\"}", accounts.addAccount(util.getJSONForObject(account1)));
+		Assert.assertEquals("{\"message\": \"The account has been sucessfully added to the list.\"}", accounts.addAccount(util.getJSONForObject(account2)));
 	}
 }
