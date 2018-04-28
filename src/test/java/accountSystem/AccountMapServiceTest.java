@@ -1,13 +1,10 @@
 package accountSystem;
 
-import static org.junit.Assert.*;
 import org.alex.domain.Account;
 import org.alex.util.JSONUtil;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-
 
 public class AccountMapServiceTest {
 
@@ -27,7 +24,12 @@ public class AccountMapServiceTest {
 	
 	@Test
 	public void addAccountTest() {
-		Assert.assertEquals("{\"message\": \"The account has been sucessfully added to the list.\"}", accounts.addAccount(util.getJSONForObject(account1)));
-		Assert.assertEquals("{\"message\": \"The account has been sucessfully added to the list.\"}", accounts.addAccount(util.getJSONForObject(account2)));
+		String expected = "{\"message\": \"The account has been sucessfully added to the list.\"}";
+		String actual1 = accounts.addAccount(util.getJSONForObject(account1));
+		Assert.assertEquals(accounts.getAccounts().size(), 1);
+		Assert.assertEquals(expected, actual1);
+		String actual2 = accounts.addAccount(util.getJSONForObject(account2));
+		Assert.assertEquals(accounts.getAccounts().size(), 2);
+		Assert.assertEquals(expected, actual2);
 	}
 }
