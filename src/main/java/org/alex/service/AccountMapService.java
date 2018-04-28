@@ -1,4 +1,4 @@
-package accountSystem;
+package org.alex.service;
 
 import java.util.HashMap;
 import java.util.Map;
