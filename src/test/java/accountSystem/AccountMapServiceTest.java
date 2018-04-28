@@ -31,5 +31,7 @@ public class AccountMapServiceTest {
 		String actual2 = accounts.addAccount(util.getJSONForObject(account2));
 		Assert.assertEquals(accounts.getAccounts().size(), 2);
 		Assert.assertEquals(expected, actual2);
+		Assert.assertEquals("{\"message\": \"The account is already stored in the list.\"}", accounts.addAccount(util.getJSONForObject(account1)));
+		Assert.assertEquals("{\"message\": \"The account is already stored in the list.\"}", accounts.addAccount(util.getJSONForObject(account2)));
 	}
 }

@@ -17,12 +17,17 @@ public class AccountMapService {
 
 	public String addAccount(String jsonAccount) {
 		Account newAccount = util.getObjectForJSON(jsonAccount, Account.class);
-		accounts.put(accounts.size()+1, newAccount);
-		return ("{\"message\": \"The account has been sucessfully added to the list.\"}");
+		if (accounts.values().stream().filter(account->account.getAccountNumber().equals(newAccount.getAccountNumber())).count()>0){
+			return "{\"message\": \"The account is already stored in the list.\"}";
+		}
+		else {
+			accounts.put(accounts.size()+1, newAccount);
+			return ("{\"message\": \"The account has been sucessfully added to the list.\"}");
+		}
+		
 	}
 
 	public Map<Integer, Account> getAccounts() {
 		return accounts;
 	}
-
 }
