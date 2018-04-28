@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import org.alex.service.AccountDBService;
 import org.alex.util.JSONUtil;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,9 +34,9 @@ public class AccountDBServiceTest {
 
 	@Before
 	public void init() {
-		dbOperations.setEm(entityManager);
+		dbOperations.setManager(entityManager);
 		myJson = new JSONUtil();
-		dbOperations.setJsonObject(myJson);
+		dbOperations.setUtil(myJson);
 	}
 
 	@Test
