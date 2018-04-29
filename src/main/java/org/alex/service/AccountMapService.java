@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.alex.domain.Account;
 import org.alex.util.JSONUtil;
 
-public class AccountMapService {
+public class AccountMapService implements IAccount {
 
 	private JSONUtil util = new JSONUtil();
 

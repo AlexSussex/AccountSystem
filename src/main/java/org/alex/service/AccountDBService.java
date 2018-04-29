@@ -8,7 +8,7 @@ import javax.transaction.Transactional;
 import org.alex.domain.Account;
 import org.alex.util.JSONUtil;
 
-public class AccountDBService {
+public class AccountDBService implements IAccount {
 
 	@Inject
 	private JSONUtil util;
