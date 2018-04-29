@@ -57,4 +57,11 @@ public class AccountDBService implements IAccount {
 		manager.merge(anAccount);
 		return "{\"message\": \"The account has been sucessfully updated.\"}";
 	}
+
+	@Override
+	public String getAllAccounts() {
+	
+		return null;
+	}
+
 }
