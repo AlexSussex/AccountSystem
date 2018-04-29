@@ -28,7 +28,19 @@ public class AccountDBService {
 		}
 		
 	}
-	private Account findAccount(int id) {
+	
+	public String removeAccount (int id) {
+		Account account = findAccount(id);
+		
+		if (account !=null) {
+			manager.remove(id);
+			return "{\"message\": \"The account has been removed from the database.\"}";
+		}
+		else {
+			return "{\"message\": \"The account cannot be found in the database.\"}";
+		}
+	}
+	public Account findAccount(int id) {
 		return manager.find(Account.class, id);
 	}
 	
