@@ -23,15 +23,15 @@ public class AccountMapServiceTest {
 	}
 	
 	@Test
-	public void addAccountTest() {
+	public void addAndRemoveAccountTest() {
 		String expected = "{\"message\": \"The account has been sucessfully added to the list.\"}";
 		String actual1 = accounts.addAccount(util.getJSONForObject(account1));
-		Assert.assertEquals(accounts.getAccounts().size(), 1);
+		Assert.assertEquals("{\"message\": \"The account has been removed.\"}", accounts.removeAccount(1));
+		Assert.assertEquals(accounts.getAccounts().size(), 0);
 		Assert.assertEquals(expected, actual1);
 		String actual2 = accounts.addAccount(util.getJSONForObject(account2));
-		Assert.assertEquals(accounts.getAccounts().size(), 2);
+		Assert.assertEquals(accounts.getAccounts().size(), 1);
 		Assert.assertEquals(expected, actual2);
-		Assert.assertEquals("{\"message\": \"The account is already stored in the list.\"}", accounts.addAccount(util.getJSONForObject(account1)));
 		Assert.assertEquals("{\"message\": \"The account is already stored in the list.\"}", accounts.addAccount(util.getJSONForObject(account2)));
 	}
 }

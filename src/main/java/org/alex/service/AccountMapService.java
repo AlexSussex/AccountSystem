@@ -27,4 +27,13 @@ public class AccountMapService {
 		return accounts;
 	}
 
+	public String removeAccount(int key) {
+		if (accounts.containsKey(key)) {
+			accounts.remove(key);
+			return "{\"message\": \"The account has been removed.\"}";
+		} else {
+			return "{\"message\": \"The account could not be found in our list.\"}";
+		}
+	}
+
 }
