@@ -51,4 +51,10 @@ public class AccountDBService {
 	public void setUtil(JSONUtil util) {
 		this.util = util;
 	}
+
+	public String updateAccount(String jsonString) {
+		Account anAccount = util.getObjectForJSON(jsonString, Account.class);
+		manager.merge(anAccount);
+		return "{\"message\": \"The account has been sucessfully updated.\"}";
+	}
 }
