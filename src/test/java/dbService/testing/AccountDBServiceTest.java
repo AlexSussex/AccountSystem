@@ -33,7 +33,7 @@ public class AccountDBServiceTest {
 
 	private JSONUtil myJson;
 
-	private static final String  MOCK_ARRAY= "[{\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}]";
+	private static final String  MOCK_ARRAY= "[{\"id\":1,\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}]";
 
 	private static final String MOCK_OBJECT = "{\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}";
 
@@ -70,7 +70,7 @@ public class AccountDBServiceTest {
 	public void testGetAllAccounts() {
 		Mockito.when(entityManager.createQuery(Mockito.anyString())).thenReturn(query);
 		ArrayList<Account> accounts = new ArrayList<Account>();
-		accounts.add(myJson.getObjectForJSON("{\"id\":1,\"firstName\":\"Alice\",\"lastName\":\"Taylor\",\"accountNumber\":\"1555\"}", Account.class));
+		accounts.add(myJson.getObjectForJSON("{\"id\":1,\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}", Account.class));
 		Mockito.when(query.getResultList()).thenReturn(accounts);
 		Assert.assertEquals(MOCK_ARRAY, dbOperations.getAllAccounts());
 	}

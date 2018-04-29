@@ -1,8 +1,11 @@
 package org.alex.service;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.alex.domain.Account;
@@ -60,8 +63,9 @@ public class AccountDBService implements IAccount {
 
 	@Override
 	public String getAllAccounts() {
-	
-		return null;
+		Query query = manager.createQuery("Select a FROM Account a");
+		Collection <Account> accounts = query.getResultList();
+		return util.getJSONForObject(accounts);
 	}
 
 }
