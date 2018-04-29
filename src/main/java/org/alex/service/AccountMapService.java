@@ -51,4 +51,9 @@ public class AccountMapService implements IAccount {
 		}
 	}
 
+	@Override
+	public String getAllAccounts() {
+		return util.getJSONForObject(accounts);
+	}
+
 }
