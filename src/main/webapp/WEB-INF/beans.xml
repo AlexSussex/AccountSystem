@@ -1,0 +1,12 @@
+<!-- this is the config file for the CDI beans -->
+
+<beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+      http://xmlns.jcp.org/xml/ns/javaee
+      http://xmlns.jcp.org/xml/ns/javaee/beans_1_1.xsd" bean-discovery-mode="all">
+      
+      <!-- <alternatives>
+        <class>org.alex.service.AccountMapService</class>
+    </alternatives> -->
+</beans>
