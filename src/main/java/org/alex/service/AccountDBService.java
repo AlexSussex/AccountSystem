@@ -1,8 +1,11 @@
 package org.alex.service;
 
+import java.util.Collection;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.alex.domain.Account;
@@ -33,7 +36,7 @@ public class AccountDBService implements IAccount {
 		Account account = findAccount(id);
 		
 		if (account !=null) {
-			manager.remove(id);
+			manager.remove(account);
 			return "{\"message\": \"The account has been removed from the database.\"}";
 		}
 		else {
@@ -57,4 +60,12 @@ public class AccountDBService implements IAccount {
 		manager.merge(anAccount);
 		return "{\"message\": \"The account has been sucessfully updated.\"}";
 	}
+
+	@Override
+	public String getAllAccounts() {
+		Query query = manager.createQuery("Select a FROM Account a");
+		Collection <Account> accounts = query.getResultList();
+		return util.getJSONForObject(accounts);
+	}
+
 }

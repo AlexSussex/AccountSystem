@@ -2,6 +2,8 @@ package dbService.testing;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
@@ -31,7 +33,7 @@ public class AccountDBServiceTest {
 
 	private JSONUtil myJson;
 
-	private static final String  MOCK_ARRAY= "[{\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}]";
+	private static final String  MOCK_ARRAY= "[{\"id\":1,\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}]";
 
 	private static final String MOCK_OBJECT = "{\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}";
 
@@ -62,6 +64,15 @@ public class AccountDBServiceTest {
 		Mockito.when(dbOperations.findAccount(1)).thenReturn(myJson.getObjectForJSON(MOCK_OBJECT, Account.class));
 		String response = dbOperations.updateAccount("{\"id\":1,\"firstName\":\"Alexandrew\",\"lastName\":\"Stevens\",\"accountNumber\":\"78945623\"}");
 		Assert.assertEquals("{\"message\": \"The account has been sucessfully updated.\"}", response);
+	}
+	
+	@Test
+	public void testGetAllAccounts() {
+		Mockito.when(entityManager.createQuery(Mockito.anyString())).thenReturn(query);
+		ArrayList<Account> accounts = new ArrayList<Account>();
+		accounts.add(myJson.getObjectForJSON("{\"id\":1,\"firstName\":\"Alice\",\"secondName\":\"Taylor\",\"accountNumber\":\"1555\"}", Account.class));
+		Mockito.when(query.getResultList()).thenReturn(accounts);
+		Assert.assertEquals(MOCK_ARRAY, dbOperations.getAllAccounts());
 	}
 
 }
