@@ -1,5 +1,4 @@
 package mapService.testing;
-
 import org.alex.domain.Account;
 import org.alex.service.AccountMapService;
 import org.alex.util.JSONUtil;
