@@ -34,4 +34,9 @@ public class AccountMapServiceTest {
 		Assert.assertEquals(expected, actual2);
 		Assert.assertEquals("{\"message\": \"The account is already stored in the list.\"}", accounts.addAccount(util.getJSONForObject(account2)));
 	}
+	
+	@Test
+	public void testUpdateAccount() {
+		Assert.assertEquals("{\"message\": \"The account has been sucessfully updated.\"}", accounts.updateAccount("{\"id\":1,\"firstName\":\"Andrew\",\"lastName\":\"Developer\",\"accountNumber\":\"12750589\"}"));
+	}
 }
