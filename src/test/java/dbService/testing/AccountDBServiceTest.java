@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import org.alex.domain.Account;
 import org.alex.service.AccountDBService;
 import org.alex.util.JSONUtil;
 import org.junit.Assert;
@@ -12,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -44,5 +47,15 @@ public class AccountDBServiceTest {
 		String response = dbOperations.addAccount(MOCK_OBJECT);
 		Assert.assertEquals("{\"message\": \"The account has been sucessfully added to the database.\"}", response);
 	}
+	
+	@Test
+	public void testRemoveAccount() {
+		Mockito.when(dbOperations.findAccount(1)).thenReturn(myJson.getObjectForJSON(MOCK_OBJECT, Account.class));
+		String response = dbOperations.removeAccount(1);
+		Assert.assertEquals("{\"message\": \"The account has been removed from the database.\"}", response);
+		String response2 = dbOperations.removeAccount(5);
+		Assert.assertEquals("{\"message\": \"The account cannot be found in the database.\"}", response2);
+	}
+	
 
 }
