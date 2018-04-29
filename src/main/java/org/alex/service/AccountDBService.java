@@ -36,7 +36,7 @@ public class AccountDBService implements IAccount {
 		Account account = findAccount(id);
 		
 		if (account !=null) {
-			manager.remove(id);
+			manager.remove(account);
 			return "{\"message\": \"The account has been removed from the database.\"}";
 		}
 		else {
