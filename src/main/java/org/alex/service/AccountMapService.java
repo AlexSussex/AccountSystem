@@ -1,4 +1,5 @@
 package org.alex.service;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -20,7 +21,7 @@ public class AccountMapService {
 		} else {
 			accounts.put(accounts.size() + 1, newAccount);
 			return ("{\"message\": \"The account has been sucessfully added to the list.\"}");
-		}		
+		}
 	}
 
 	public Map<Integer, Account> getAccounts() {
@@ -33,6 +34,20 @@ public class AccountMapService {
 			return "{\"message\": \"The account has been removed.\"}";
 		} else {
 			return "{\"message\": \"The account could not be found in our list.\"}";
+		}
+	}
+
+	public String updateAccount(String accountToUpdate) {
+		Account anAccount = util.getObjectForJSON(accountToUpdate, Account.class);
+		if (accounts.values().stream().filter(account -> account.getId() == anAccount.getId()) != null) {
+			accounts.forEach((key, value) -> {
+				if (value.getId() == anAccount.getId()) {
+					accounts.replace(key, anAccount);
+				}
+			});
+			return "{\"message\": \"The account has been sucessfully updated.\"}";
+		} else {
+			return "{\"message\": \"This account cannot be updated.\"}";
 		}
 	}
 
