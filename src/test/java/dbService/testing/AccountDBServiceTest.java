@@ -57,5 +57,11 @@ public class AccountDBServiceTest {
 		Assert.assertEquals("{\"message\": \"The account cannot be found in the database.\"}", response2);
 	}
 	
+	@Test
+	public void testUpdateAccount() {
+		Mockito.when(dbOperations.findAccount(1)).thenReturn(myJson.getObjectForJSON(MOCK_OBJECT, Account.class));
+		String response = dbOperations.updateAccount("{\"id\":1,\"firstName\":\"Alexandrew\",\"lastName\":\"Stevens\",\"accountNumber\":\"78945623\"}");
+		Assert.assertEquals("{\"message\": \"The account has been sucessfully updated.\"}", response);
+	}
 
 }
