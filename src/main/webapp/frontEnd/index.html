@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Account System</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="accountSystem" ng-controller="accountController">
+
+    <p>Welcome to my account system:</p>
+
+            <div>
+
+                    First Name : <input ng-model="firstName" /><br/><br/>
+
+                    Last Name  : <input ng-model="secondName" /><br/><br/>
+
+                    Account Number : <input ng-model="accountNumber" /><br/><br/>
+
+                <input type="button" value="Send" ng-click="postdata(firstName, secondName, accountNumber)" /> <br/><br/>
+
+            </div>
+
+        </div>
+
+        <script src="accountsystem.js">
+
+        </script>
+
+    </body>
+</html>
