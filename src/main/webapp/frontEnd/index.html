@@ -25,19 +25,28 @@
 		</tr>
 	</table>
 
+    <div id="deleteAccount">
+        <p>Input the ID of the account you want to delete</p>
 
+        ID : <input ng-model="idToDelete"  type="number"/><br/><br/>
 
-            <p>Output Message : {{msg}}</p>
+        <input type="button" value="Delete" ng-click="deletedata(idToDelete)" />
 
-            <p>StatusCode: {{statusval}}</p>
+    </div>
+    
+    <div id="statusMessages">
+        <p>Output Message : {{msg}}</p>
 
-            <p>Status: {{statustext}}</p>
+        <p>StatusCode: {{statusval}}</p>
 
-            <p>reply Headers: {{headers}}</p>
+        <p>Status: {{statustext}}</p>
+
+        <p>reply Headers: {{headers}}</p>
+    </div>
 
 </div>
 
         <script src="accountsystem.js"></script>
-        
+
     </body>
 </html>
