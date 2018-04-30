@@ -10,7 +10,7 @@ public class Account {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private int id;
 	
 	@Column (length = 20)
 	private String firstName;
@@ -53,7 +53,7 @@ public class Account {
 		this.accountNumber = accountNumber;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
 	}	
 }

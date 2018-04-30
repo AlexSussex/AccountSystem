@@ -3,7 +3,7 @@ package org.alex.integration;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
-@ApplicationPath("rs")
+@ApplicationPath("rest")
 public class RSActivator extends Application {
 
 	

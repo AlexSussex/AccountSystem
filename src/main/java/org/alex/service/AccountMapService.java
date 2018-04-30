@@ -2,11 +2,14 @@ package org.alex.service;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 
 import org.alex.domain.Account;
 import org.alex.util.JSONUtil;
 
+@Alternative
 public class AccountMapService implements IAccount {
 
 	private JSONUtil util = new JSONUtil();
