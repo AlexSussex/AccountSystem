@@ -18,9 +18,11 @@ public class AccountMapServiceTest {
 	@Before
 	public void init() {
 		accounts = new AccountMapService();
-		account1 = new Account("Alex", "Developer", "12750589");
-		account2 = new Account("Andrew", "Stevens", "16542389");
 		util = new JSONUtil();
+		account1 = util.getObjectForJSON("{\"id\":\"1\",\"firstName\":\"Alex\",\"secondName\":\"Developer\","
+				+ "\"accountNumber\":\"12750589\"}", Account.class);
+		account2 = util.getObjectForJSON("{\"id\":\"2\",\"firstName\":\"Andrew\","
+				+ "\"secondName\":\"Stevens\",\"accountNumber\":\"16542389\"}", Account.class);
 	}
 
 	@Test
@@ -40,15 +42,15 @@ public class AccountMapServiceTest {
 	@Test
 	public void testUpdateAccount() {
 		Assert.assertEquals("{\"message\": \"The account has been sucessfully updated.\"}", accounts.updateAccount(
-				"{\"id\":1,\"firstName\":\"Andrew\",\"lastName\":\"Developer\",\"accountNumber\":\"12750589\"}"));
+				"{\"id\":1,\"firstName\":\"Andrew\",\"secondName\":\"Developer\",\"accountNumber\":\"12750589\"}"));
 	}
 
 	@Test
 	public void testGetAllAccounts() {
 		accounts.addAccount(util.getJSONForObject(account1));
 		accounts.addAccount(util.getJSONForObject(account2));
-		Assert.assertEquals("{\"1\":{\"firstName\":\"Alex\",\"secondName\":\"Developer\","
-				+ "\"accountNumber\":\"12750589\"},\"2\":{\"firstName\":\"Andrew\","
+		Assert.assertEquals("{\"1\":{\"id\":1,\"firstName\":\"Alex\",\"secondName\":\"Developer\","
+				+ "\"accountNumber\":\"12750589\"},\"2\":{\"id\":2,\"firstName\":\"Andrew\","
 				+ "\"secondName\":\"Stevens\",\"accountNumber\":\"16542389\"}}", accounts.getAllAccounts());
 	}
 }
