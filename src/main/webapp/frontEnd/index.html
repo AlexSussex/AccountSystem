@@ -33,7 +33,19 @@
         <input type="button" value="Delete" ng-click="deletedata(idToDelete)" />
 
     </div>
-    
+
+    <div>
+
+        First Name : <input ng-model="firstName" /><br/><br/>
+
+        Last Name  : <input ng-model="secondName" /><br/><br/>
+
+        Account Number : <input ng-model="accountNumber" /><br/><br/>
+
+        <input type="button" value="AddAccount" ng-click="postdata(firstName, secondName, accountNumber)" /> <br/><br/>
+
+    </div>
+
     <div id="statusMessages">
         <p>Output Message : {{msg}}</p>
 
