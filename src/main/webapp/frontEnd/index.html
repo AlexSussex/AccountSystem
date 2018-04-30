@@ -9,25 +9,35 @@
 
 <div ng-app="accountSystem" ng-controller="accountController">
 
-    <p>Welcome to my account system:</p>
+    <h1>The following accounts are stored in our database:</h1>
+	<table id="myAccountsTable">
+		<tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Account Number</th>
+		</tr>
+			<tr ng-repeat="a in myAccounts">
+            <th>{{a.id}}</th>
+            <th>{{a.firstName}}</th>
+            <th>{{a.secondName}}</th>
+            <th>{{a.accountNumber}}</th>
+		</tr>
+	</table>
 
-            <div>
 
-                    First Name : <input ng-model="firstName" /><br/><br/>
 
-                    Last Name  : <input ng-model="secondName" /><br/><br/>
+            <p>Output Message : {{msg}}</p>
 
-                    Account Number : <input ng-model="accountNumber" /><br/><br/>
+            <p>StatusCode: {{statusval}}</p>
 
-                <input type="button" value="Send" ng-click="postdata(firstName, secondName, accountNumber)" /> <br/><br/>
+            <p>Status: {{statustext}}</p>
 
-            </div>
+            <p>reply Headers: {{headers}}</p>
 
-        </div>
+</div>
 
-        <script src="accountsystem.js">
-
-        </script>
-
+        <script src="accountsystem.js"></script>
+        
     </body>
 </html>
