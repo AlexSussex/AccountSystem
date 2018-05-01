@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Account System</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="accountSystem" ng-controller="accountController">
+
+    <h1>The following accounts are stored in our database:</h1>
+	<table id="myAccountsTable">
+		<tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Account Number</th>
+		</tr>
+			<tr ng-repeat="a in myAccounts">
+            <th>{{a.id}}</th>
+            <th>{{a.firstName}}</th>
+            <th>{{a.secondName}}</th>
+            <th>{{a.accountNumber}}</th>
+		</tr>
+	</table>
+
+    <div id="deleteAccount">
+        <p>Input the ID of the account you want to delete</p>
+
+        ID : <input ng-model="idToDelete"  type="number"/><br/><br/>
+
+        <input type="button" value="Delete" ng-click="deletedata(idToDelete)" ng-init="getAll()"/>
+
+    </div>
+
+    <div>
+
+        First Name : <input ng-model="firstName" /><br/><br/>
+
+        Last Name  : <input ng-model="secondName" /><br/><br/>
+
+        Account Number : <input ng-model="accountNumber" /><br/><br/>
+
+        <input type="button" value="AddAccount" ng-click="postdata(firstName, secondName, accountNumber)" /> <br/><br/>
+
+    </div>
+
+    <div id="statusMessages">
+        <p>Output Message : {{msg}}</p>
+
+        <p>StatusCode: {{statusval}}</p>
+
+        <p>Status: {{statustext}}</p>
+
+        <p>reply Headers: {{headers}}</p>
+    </div>
+
+</div>
+
+        <script src="accountsystem.js"></script>
+
+    </body>
+</html>
