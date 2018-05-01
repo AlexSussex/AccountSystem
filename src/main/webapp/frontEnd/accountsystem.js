@@ -9,6 +9,17 @@ app.controller('accountController', function($scope, $http) {
 	$scope.updateANumber=null;
 	$scope.lblMsg = null;
 
+	$scope.getAll = function(){
+		$http({
+	        method : "GET",
+	        url : "http://localhost:8080/accountSystem/rest/account/json"
+	    }).then(function mySuccess(reply) {
+	        $scope.myAccounts = reply.data;
+	    }, function myError(reply) {
+	        $scope.myAccounts = reply.statusText;
+	    });	
+	};
+
 	$scope.deletedata = function (idToDelete) {
 		var url = "http://localhost:8080/accountSystem/rest/account/json/" + idToDelete.toString();
 		$http.delete(url).then(function (reply) {
@@ -22,15 +33,6 @@ app.controller('accountController', function($scope, $http) {
 		});
 	};
 
-	$http({
-        method : "GET",
-        url : "http://localhost:8080/accountSystem/rest/account/json"
-    }).then(function mySuccess(reply) {
-        $scope.myAccounts = reply.data;
-    }, function myError(reply) {
-        $scope.myAccounts = reply.statusText;
-    });
-
     $scope.postdata = function (firstName,secondName,accountNumber){
     	var data = {
     		firstName: firstName,
@@ -39,7 +41,7 @@ app.controller('accountController', function($scope, $http) {
     	};
 		$http.post('http://localhost:8080/accountSystem/rest/account/json', JSON.stringify(data)).then(function (reply) {
 			if (reply.data)
-			$scope.msg = "Data submitted";
+			$scope.msg = "Account created!";
 		}, function (reply) {
 			$scope.msg = "Service not available";
 			$scope.statusval = reply.status;
@@ -47,6 +49,6 @@ app.controller('accountController', function($scope, $http) {
 			$scope.headers = reply.headers();
 		});
 	};
-};
+});
    
 		
